@@ -4,5 +4,8 @@ header {
 	width: 100%;
 	color: white;
 	padding: 10px;
-	margin: auto;
+}
+body {
+	margin: 0;
+	padding: 0;
 }
