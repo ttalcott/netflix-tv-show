@@ -52,7 +52,7 @@
 			</h3>
 			<ul class="use-case">
 				<li>Each <strong>series</strong> can contain many <strong>episodes</strong></li>
-				<li>Many <strong>usesr</strong> can have many <strong>watch lists</strong></li>
+				<li>Many <strong>users</strong> can have many <strong>watch lists</strong></li>
 				<li>Each user can add many <strong>episodes</strong> to their <strong>watch list</strong></li>
 			</ul>
 		</main>
