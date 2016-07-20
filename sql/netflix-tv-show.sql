@@ -15,7 +15,7 @@ CREATE TABLE episode (
 	PRIMARY KEY(episodeId)
 );
 CREATE TABLE watchlist (
-	watchlistEpisodeId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	watchlistEpisodeId INT UNSIGNED NOT NULL,
 	watchlistUserId INT UNSIGNED NOT NULL,
 	INDEX(watchlistEpisodeId),
 	INDEX(watchlistUserId),
