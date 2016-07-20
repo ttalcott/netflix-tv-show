@@ -1,3 +1,16 @@
+DROP TABLE IF EXISTS watchlist;
+DROP TABLE IF EXISTS episode;
+DROP TABLE IF EXISTS series;
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE user (
+	userId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	userEmail VARCHAR(128) NOT NULL,
+	userName VARCHAR(32) NOT NULL,
+	UNIQUE(userEmail),
+	UNIQUE(userName),
+	PRIMARY KEY(userId)
+);
 CREATE TABLE series (
 	seriesId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	seriesTitle VARCHAR (32) NOT NULL,
@@ -22,12 +35,4 @@ CREATE TABLE watchlist (
 	FOREIGN KEY(watchlistEpisodeId) REFERENCES episode(episodeId),
 	FOREIGN KEY(watchlistUserId) REFERENCES user(userId),
 	PRIMARY KEY(watchlistEpisodeId, watchlistUserId)
-);
-CREATE TABLE user (
-	userId INT UNSIGNED AUTO_INCREMENT NOT NULL,
-	userEmail VARCHAR(128) NOT NULL,
-	userName VARCHAR(32) NOT NULL,
-	UNIQUE(userEmail),
-	UNIQUE(userName),
-	PRIMARY KEY(userId)
 );
