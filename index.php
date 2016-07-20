@@ -52,11 +52,8 @@
 			</h3>
 			<ul class="use-case">
 				<li>Each <strong>series</strong> can contain many <strong>episodes</strong></li>
-				<li>Each <strong>episode</strong> can <em>only</em> belong to one <strong>series</strong></li>
-				<li>Each <strong>user</strong> can only have one <strong>watch list</strong></li>
-				<li>Each <strong>watch list</strong> belongs to only one <strong>user</strong></li>
+				<li>Many <strong>usesr</strong> can have many <strong>watch lists</strong></li>
 				<li>Each user can add many <strong>episodes</strong> to their <strong>watch list</strong></li>
-				<li>Each <strong>episode</strong> can belong to many <strong>watch lists</strong></li>
 			</ul>
 		</main>
 	</body>

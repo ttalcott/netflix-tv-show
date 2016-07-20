@@ -1,26 +1,28 @@
 header {
-	text-align: center;
 	background-color: black;
 	width: 100%;
 	color: rgba(229, 9, 20, 1.0);
 	padding: 10px;
 	font-size: x-large;
+	font-family: sans-serif;
 }
 body {
 	margin: 0;
 	padding: 0;
 }
 h2 {
-	text-align: center;
 	font-family: sans-serif;
 	font-size: large;
 }
 h3 {
 	padding-left: 1%;
+	font-family: sans-serif;
 }
 .upper-alpha {
 	list-style-type: upper-alpha;
+	font-family: sans-serif;
 }
 .use-case {
 	list-style-image: url(../images/bullet.jpg);
+	font-family: sans-serif;
 }
