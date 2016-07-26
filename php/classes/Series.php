@@ -1,4 +1,15 @@
 <?php
+namespace Edu\Cnm\Ttalcott\DataDesign;
+
+require_once("autoload.php");
+
+/**
+ * Small cross section of a Netflix like Series and Episode
+ *
+ * @author Travis Talcott <ttalcott@cnm.edu>
+ * @version 1.0.0
+ */
+
 class Series {
 	/**
 	 * id for this series; this is the primary key
