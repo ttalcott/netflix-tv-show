@@ -20,9 +20,25 @@ class Series {
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are too big (i.e. strings that exceed character limit)
 	 * @throws \TypeError if data violates type hints
+	 * @throws \Exception if any other exception occurs
 	 **/
 	public function __construct(int $newSeriesId = null, string $newSeriesTitle) {
-
+		try {
+		$this->setSeriesId($newSeriesId);
+		$this->setSeriesTitle($newSeriesTitle);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			//rethrow the exception to the caller
+			throw(new\InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			//rethrow the exception to the caller
+			throw(new\RangeException($range->getMessage(), 0, $range));
+		} catch(\TypeError $typeError) {
+			//rethrow to the caller/
+			throw(new\TypeError($typeError ->getMessage(), 0, $typeError));
+		} catch(\Exception $exception) {
+			//rethrow to the caller
+			throw(new\Exception($exception->getMessage(), 0, $exception));
+		}
 	}
 	/**
 	 * accessor method for series Id
