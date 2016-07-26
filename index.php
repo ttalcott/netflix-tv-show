@@ -18,13 +18,13 @@
 			<h3>
 				Persona:
 			</h3>
-			<ol class="use-case">
+			<ul class="use-case">
 				<li>Age: 20 years old</li>
 				<li>Occupation: Professional Netflix watcher and TV show aficionado</li>
 				<li>Goals: Earn a living by watching every episode of his favorite TV show a world record setting number of times</li>
 				<li>Dislikes: Slow loading content, slow wifi, Comcast, bad aesthetics on websites and apps, an app that is not easy to use</li>
 				<li>Needs from an app: must be easy to use, can't be slow to load features, has too look "sharp", must be set up in a logical order, has to be easy to find intended content</li>
-			</ol>
+			</ul>
 			<h3>
 				Use Case:
 			</h3>
