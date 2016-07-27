@@ -76,7 +76,7 @@ class Episode {
 	 * @return int|null value of episode id
 	 **/
 	public function getEpisodeId() {
-		return ($this->episodeId);
+		return($this->episodeId);
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Episode {
 	 * @return int value of episode series id
 	 **/
 	public function getEpisodeSeriesId() {
-		return ($this->episodeSeriesId);
+		return($this->episodeSeriesId);
 	}
 
 	/**
@@ -201,7 +201,7 @@ class Episode {
 	 * @return int|null value of episode resolution
 	 **/
 	public function getEpisodeResolution() {
-		return ($this->episodeResolution);
+		return($this->episodeResolution);
 	}
 
 	/**

@@ -30,8 +30,8 @@ class Series {
 	 **/
 	public function __construct(int $newSeriesId = null, string $newSeriesTitle) {
 		try {
-		$this->setSeriesId($newSeriesId);
-		$this->setSeriesTitle($newSeriesTitle);
+			$this->setSeriesId($newSeriesId);
+			$this->setSeriesTitle($newSeriesTitle);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			//rethrow the exception to the caller
 			throw(new\InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
@@ -40,7 +40,7 @@ class Series {
 			throw(new\RangeException($range->getMessage(), 0, $range));
 		} catch(\TypeError $typeError) {
 			//rethrow to the caller/
-			throw(new\TypeError($typeError ->getMessage(), 0, $typeError));
+			throw(new\TypeError($typeError->getMessage(), 0, $typeError));
 		} catch(\Exception $exception) {
 			//rethrow to the caller
 			throw(new\Exception($exception->getMessage(), 0, $exception));
@@ -53,7 +53,7 @@ class Series {
 	 * @return int|null value of series Id
 	 **/
 	public function getSeriesId() {
-		return($this->seriesId);
+		return ($this->seriesId);
 	}
 
 	/**
@@ -84,7 +84,7 @@ class Series {
 	 * @return string value for series title
 	 */
 	public function getSeriesTitle() {
-		return($this->seriesTitle);
+		return ($this->seriesTitle);
 	}
 
 	/**
@@ -104,11 +104,36 @@ class Series {
 		}
 
 		//verify title contains correct number of characters
-		if(strlen($newSeriesTitle) >32) {
+		if(strlen($newSeriesTitle) > 32) {
 			throw(new \RangeException("title contains too many characters"));
 		}
 
 		//convert and store series title
 		$this->seriesTitle = $newSeriesTitle;
+	}
+
+	/**
+	 * insert this series into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL error occurs
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo) {
+		//enforce series id is null (don't insert a series that already exists)
+		if($this->seriesId !== null) {
+			throw(new \PDOException("not a new series"));
+		}
+
+		//create query template
+		$query = "INSERT INTO series(seriesTitle) VALUES(:seriesTitle)";
+		$statement = $pdo->prepare($query);
+
+		//bind the variables to the placeholders in this template
+		$parameters = ["seriesTitle" => $this->seriesTitle];
+		$statement->execute($parameters);
+
+		//update null seriesId with the value mySQL gives us
+		$this->seriesId = intval($pdo->lastInsertId());
 	}
 }
