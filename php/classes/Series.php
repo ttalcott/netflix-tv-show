@@ -113,7 +113,7 @@ class Series {
 	}
 
 	/**
-	 * insert this series into mySQL
+	 * inserts this series into mySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL error occurs
@@ -135,5 +135,49 @@ class Series {
 
 		//update null seriesId with the value mySQL gives us
 		$this->seriesId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this series from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function delete(\PDO $pdo) {
+		//enforce this series id is not null (do not delete a series that doesn't exist)
+		if($this->seriesId !==null) {
+			throw(new \PDOException("cannot delete data that does not exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM series WHERE seriesId = :seriesId";
+		$statement = $pdo->prepare($query);
+
+		//bind the variables to the placeholders in this template
+		$parameters = ["seriesId" => $this->seriesId];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * updates this series in mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function update(\PDO $pdo) {
+		//enforce series id is not null (do not update a series that doesn't exist)
+		if($this->seriesId !== null) {
+			throw(new \PDOException("cannot update a series that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE series SET seriesTitle = :seriesTitle WHERE seriesId = seriesId";
+		$statement = $pdo->prepare($query);
+
+		//bind the variables to the placeholders in this template
+		$parameters = ["seriesTitle" => $this->seriesTitle];
+		$statement->execute($parameters);
 	}
 }
